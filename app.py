@@ -38,15 +38,18 @@ class Posts(db.Model):
     '''sr_no, title, slug,content, date,writer    '''
     sr_no = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
+    subtitle = db.Column(db.String(100), nullable=False)
     slug = db.Column(db.String(50), nullable=False)
     content = db.Column(db.String(10000), nullable=True)
     date = db.Column(db.String(25), nullable=True)
     writer = db.Column(db.String(25), nullable=False)
+    img_file = db.Column(db.String(50), nullable=True)
 
 
 @app.route("/")
 def home():
-    return render_template('index.html', params=params)
+    posts=Posts.query.filter_by().all()[0:params['numbers_of_posts']]
+    return render_template('index.html', params=params, posts=posts)
 
 
 @app.route("/about")
@@ -56,7 +59,8 @@ def about():
 
 @app.route("/post/<string:post_slug>", methods=['GET'])
 def post_route(post_slug):
-    return render_template('post.html', params=params)
+    post=Posts.query.filter_by(slug=post_slug).first()
+    return render_template('post.html', params=params, post=post)
 
 
 @app.route("/contact", methods=['GET', 'POST'])

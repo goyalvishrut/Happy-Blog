@@ -1,5 +1,6 @@
 {
     "params": {
+        "title_blog":"Happy Blog",
         "local_server": "True",
         "local_url": "mysql+pymysql://root:@localhost/happyblog",
         "prod_url": "mysql+pymysql://user_name:password@host/db_name",
@@ -7,6 +8,8 @@
         "twitter_url": "https://twitter.com/goyalvishrut",
         "github_url": "https://github.com/goyalvishrut",
         "gmail_user":"goyalvishrut@gmail.com",
-        "gmail_password":""
+        "gmail_password":"",
+        "numbers_of_posts":5,
+        "about":"This is the about Section of the blog"
     }
-}
+} 
