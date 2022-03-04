@@ -12,6 +12,7 @@
         "numbers_of_posts":5,
         "about":"This is the about Section of the blog",
         "admin_username":"happy_blog",
-        "admin_password":"password"
+        "admin_password":"password",
+        "upload_location":"C:\\Users\\Vishrut Goyal\\Downloads\\project\\Flask\\happyblog\\static\\assets\\img"
     }
 } 
