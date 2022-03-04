@@ -10,6 +10,8 @@
         "gmail_user":"goyalvishrut@gmail.com",
         "gmail_password":"",
         "numbers_of_posts":5,
-        "about":"This is the about Section of the blog"
+        "about":"This is the about Section of the blog",
+        "admin_username":"happy_blog",
+        "admin_password":"password"
     }
 } 
