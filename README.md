@@ -34,4 +34,11 @@ https://codewithharry.com/
 
 ## Video Showing Features of Blog!
 
+### Admin Login and Logout
+
+https://user-images.githubusercontent.com/69802649/156896212-ac6bfbb4-a812-44a2-9179-96e8f24c4bc3.mp4
+
+### Edit Feature of Existing Post
+
+https://user-images.githubusercontent.com/69802649/156896269-347135ac-f635-4e52-b069-e084e75be94b.mp4
 
