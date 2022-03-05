@@ -7,7 +7,7 @@ This code was written by Vishrut Goyal.
 
 ## Description
 
-It is a Bloging website which helps you to manage blogs and proivde different features in it.
+It is a Bloging website which helps you to manage blogs and proivde different features in it._
 It is been developed using HTML, CSS, PYTHON, FLASK, MY-SQL, JS.
 
 ## Instructions for instalation
