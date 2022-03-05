@@ -12,21 +12,21 @@ It is been developed using HTML, CSS, PYTHON, FLASK, MY-SQL, JS.
 
 ## Instructions for instalation
 
-1 PULL the project in your local computer
-2 Install python in local machine
-3 Install flask, flask_sql-alchemy, flask_mail, slugify, datetime modules from python
-4 Install VS-CODE, XAMPP softwares
-5 Change upload_location from config.json
-6 start the XAMPP control panel
-7 start Apache from XAMPP control Panel
-8 start SQL from XAMPP control Panel
-9 Create a new Database namely happyblog
-10 Import the "happyblog.sql" file in newly created Database
-11 Run the app.py file.
+1 PULL the project in your local computer<br>
+2 Install python in local machine<br>
+3 Install flask, flask_sql-alchemy, flask_mail, slugify, datetime modules from python<br>
+4 Install VS-CODE, XAMPP softwares<br>
+5 Change upload_location from config.json<br>
+6 start the XAMPP control panel<br>
+7 start Apache from XAMPP control Panel<br>
+8 start SQL from XAMPP control Panel<br>
+9 Create a new Database namely happyblog<br>
+10 Import the "happyblog.sql" file in newly created Database<br>
+11 Run the app.py file<br>
 
 ## Reference
 
-https://getbootstrap.com/
-https://flask-sqlalchemy.palletsprojects.com/en/2.x/
-https://flask.palletsprojects.com/en/2.0.x/
-https://www.python.org/
+https://getbootstrap.com/<br>
+https://flask-sqlalchemy.palletsprojects.com/en/2.x/<br>
+https://flask.palletsprojects.com/en/2.0.x/<br>
+https://www.python.org/<br>
