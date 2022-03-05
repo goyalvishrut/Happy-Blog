@@ -10,7 +10,7 @@ This code was written by **Vishrut Goyal**.
 It is a Bloging website which helps you to manage blogs and proivde different features in it.<br>
 It is been developed using **HTML, CSS, PYTHON, FLASK, MY-SQL, JS**.
 
-## Instructions for instalation
+## Instructions for Instalation
 
 1 PULL the project in your local computer<br>
 2 Install python in local machine<br>
