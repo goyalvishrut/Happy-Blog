@@ -31,3 +31,7 @@ https://flask-sqlalchemy.palletsprojects.com/en/2.x/<br>
 https://flask.palletsprojects.com/en/2.0.x/<br>
 https://www.python.org/<br>
 https://codewithharry.com/
+
+## Video Showing Features of Blog!
+
+
