@@ -1,19 +1,19 @@
 {
     "params": {
-        "title_blog":"Happy Blog",
+        "title_blog": "Happy Blog",
         "local_server": "True",
         "local_url": "mysql+pymysql://root:@localhost/happyblog",
         "prod_url": "mysql+pymysql://user_name:password@host/db_name",
         "facebook_url": "#",
-        "twitter_url": "#",
+        "linkedin_url": "https://www.linkedin.com/in/vishrut-goyal-9788451a0/",
         "github_url": "https://github.com/goyalvishrut",
-        "gmail_user":"#",
-        "gmail_password":"",
-        "numbers_of_posts":2,
-        "about":"This is the about Section of the blog",
-        "admin_username":"happy_blog",
-        "admin_password":"happy_blog",
-        "upload_location":"C:\\Users\\Vishrut Goyal\\Downloads\\project\\Flask\\happyblog\\static\\assets\\img",
-        "default_post_bg_img":"home-bg.jpg"
+        "gmail_user": "#",
+        "gmail_password": "",
+        "numbers_of_posts": 2,
+        "about": "Hey there! My name is Vishrut!! I am a computer science enthusiast. I am a CS grad student. I do a lot of data science and machine learning related projects and research work, that can be found in my GitHub. I also participate in programming contests at Codechef and InterviewBit. I have a deep passion for tech. I have worked on Machine Learning, Deep Learning, Data Mining, Cloud Computing, Software Development. The goal of my life is to gain knowledge and exposure and achieve great heights in whatever field I find myself in. I am always curious to learn new things. I have found my intrest on problem solving and data engineering.",
+        "admin_username": "happy_blog",
+        "admin_password": "happy_blog",
+        "upload_location": "C:\\Users\\Vishrut Goyal\\Downloads\\project\\Flask\\happyblog\\static\\assets\\img",
+        "default_post_bg_img": "home-bg.jpg"
     }
-} 
+}
