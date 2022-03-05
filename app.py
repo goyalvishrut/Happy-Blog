@@ -1,3 +1,4 @@
+from distutils.sysconfig import customize_compiler
 from flask import Flask, render_template, request, session, redirect
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import secure_filename
@@ -5,7 +6,7 @@ from datetime import datetime
 import os
 from flask_mail import Mail
 import json
-
+from slugify import slugify,Slugify,UniqueSlugify
 from pyparsing import PositionToken
 
 local_server = True
@@ -56,7 +57,7 @@ class Posts(db.Model):
 
 @app.route("/")
 def home():
-    posts = Posts.query.filter_by().all()[0:params['numbers_of_posts']]
+    posts = Posts.query.all()[0:params['numbers_of_posts']]
     return render_template('index.html', params=params, posts=posts)
 
 
@@ -65,12 +66,18 @@ def about():
     return render_template('about.html', params=params)
 
 @app.route("/uploader", methods=['GET', 'POST'])
-def uploader():
+def uploader(post_slug,upload_type):
     if ('user' in session and session['user'] == params['admin_username']):
         if request.method == 'POST':
             f=request.files['file1']
-            f.save(os.path.join(app.config['UPLOADER_PATH'],secure_filename(f.filename)))
-            return ("Uploaded Successfuly")
+            if f.filename=="" and upload_type=="add_upload":
+                return params['default_post_bg_img']
+            if f.filename=="" and upload_type=="edit_upload":
+                return None
+            f_name=post_slug+".jpg"
+            f.save(os.path.join(app.config['UPLOADER_PATH'],secure_filename(f_name)))
+            return f_name
+            
 
 @app.route("/post/<string:post_slug>", methods=['GET'])
 def post_route(post_slug):
@@ -79,17 +86,24 @@ def post_route(post_slug):
 
 @app.route("/edit/<string:post_sr_no>", methods=['GET','POST'])
 def edit_route(post_sr_no):
+    custom_slugify = UniqueSlugify(to_lower=True)
     if ('user' in session and session['user'] == params['admin_username']):
         if (request.method == 'POST'):
             title_v = request.form.get('title')
             subtitle_v = request.form.get('subtitle')
-            slug_v = request.form.get('slug')
+            # slug_v = request.form.get('slug')
             content_v = request.form.get('content')
-            img_file_v = request.form.get('img_file')
+            # img_file_v = request.form.get('img_file')
             # writer_v = request.form.get('writer')
             # date_v=datetime.now()
         
             post=Posts.query.filter_by(sr_no=post_sr_no).first()
+            slug_v=(custom_slugify(title_v+str(post.sr_no)))
+            img_v_temp=uploader(slug_v,"edit_upload")
+            if(img_v_temp==None):
+                img_file_v=post.img_file
+            else:
+                img_file_v = img_v_temp
             post.title=title_v
             post.subtitle=subtitle_v
             post.slug=slug_v
@@ -98,38 +112,46 @@ def edit_route(post_sr_no):
             post.writer=post.writer
             post.img_file=img_file_v
             db.session.commit()
-            return redirect('/edit/'+post_sr_no,)
+            post = Posts.query.filter_by(slug=slug_v).first()
+            return redirect('/post/'+slug_v)
     post=Posts.query.filter_by(sr_no=post_sr_no).first()
     return render_template('edit.html', params=params,post=post)
 
 
-@app.route("/add/<string:post_sr_no>", methods=['GET','POST'])
-def add_route(post_sr_no):
+@app.route("/add/0", methods=['GET','POST'])
+def add_route():
     if ('user' in session and session['user'] == params['admin_username']):
         if (request.method == 'POST'):
+
+            custom_slugify = UniqueSlugify(to_lower=True)
             title_v = request.form.get('title')
             subtitle_v = request.form.get('subtitle')
-            slug_v = request.form.get('slug')
+            # slug_v = request.form.get('slug')
             content_v = request.form.get('content')
-            img_file_v = request.form.get('img_file')
             writer_v = request.form.get('writer')
             date_v=datetime.now()
-        
+            post = Posts.query.filter_by().all()
+
+            slug_v=(custom_slugify(title_v+str(post[-1].sr_no+1)))
+            img_file_v = uploader(slug_v,"add_upload")
             '''sr_no, title,subtitle, slug,content, date,writer,img_file    '''
             post=Posts(title=title_v,subtitle=subtitle_v,slug=slug_v,content=content_v,date=date_v,writer=writer_v,img_file=img_file_v)
             db.session.add(post)
             db.session.commit()
-    post=Posts.query.filter_by(sr_no=post_sr_no).first()
-    return render_template('add.html', params=params,post_sr_no=post_sr_no,post=post)
+
+            return redirect('/post/'+slug_v)
+        return render_template('add.html', params=params)
+    else:
+        return render_template('login.html',params=params)
 
 
 @app.route("/delete/<string:post_sr_no>")
 def delete(post_sr_no):
     if ('user' in session and session['user'] == params['admin_username']):
-        # post=Posts.query.filter_by(sr_no=post_sr_no).first()
-        # db.session.delete(post)
-        # db.session.commit()
-        pass
+        post=Posts.query.filter_by(sr_no=post_sr_no).first()
+        db.session.delete(post)
+        db.session.commit()
+        os.remove(os.path.join(app.config['UPLOADER_PATH'],post.img_file))
     return redirect('/login')
 
 @app.route("/contact", methods=['GET', 'POST'])
@@ -148,10 +170,10 @@ def contact():
                         email=email_v)
         db.session.add(entry)
         db.session.commit()
-        mail.send_message('New message from ' + name_v + ' (HAPPY BLOG)',
-                          sender=email_v,
-                          recipients=[params['gmail_user']],
-                          body=message_v + "\n" + phone_v)
+        # mail.send_message('New message from ' + name_v + ' (HAPPY BLOG)',
+        #                   sender=email_v,
+        #                   recipients=[params['gmail_user']],
+        #                   body=message_v + "\n" + phone_v)
     return render_template('contact.html', params=params)
 
 

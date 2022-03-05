@@ -22,40 +22,47 @@
                 <a href="/logout"><button class="btn btn-primary text-uppercase">Logout</button></a>
             </div>
             <hr>
-            <form id="contactForm" action="/post/{{post.slug}}" method="post" data-sb-form-api-token="API_TOKEN">
+            <!-- Image Uploader
+            <form action="/uploader" method="post" enctype="multipart/form-data">
+                <input type="file" name="file1">
+                <button type="submit" class="btn btn-primary text-uppercase">Upload</button>
+            </form> -->
+            <!-- <hr> -->
+            <form id="contactForm" action="/add/0" method="post" data-sb-form-api-token="API_TOKEN"
+                enctype="multipart/form-data">
                 <div class="form-floating">
-                    <input class="form-control" id="title" name="title" type="text" placeholder="Title"
-                        data-sb-validations="required" value="{{post.title}}" />
+                    <input class="form-control" id="title" name="title" type="text" placeholder="Title" required />
                     <label for="title">Title</label>
                     <div class="invalid-feedback" data-sb-feedback="name:required">A title is required.</div>
                 </div>
                 <div class="form-floating">
                     <input class="form-control" id="subtitle" name="subtitle" type="text" placeholder="Subtitle"
-                        data-sb-validations="required,email" value="{{post.subtitle}}" />
+                        required />
                     <label for="subtitle">Sub Title</label>
                     <div class="invalid-feedback" data-sb-feedback="email:required">A subtitle is required.</div>
                 </div>
-                <div class="form-floating">
-                    <input class="form-control" id="slug" name="slug" type="text" placeholder="Slug"
-                        data-sb-validations="required" value="{{post.slug}}" />
+                <!-- <div class="form-floating">
+                    <input class="form-control" id="slug" name="slug" type="text" placeholder="Slug" required />
                     <label for="slug">Slug</label>
                     <div class="invalid-feedback" data-sb-feedback="name:required">A Slug is required.</div>
-                </div>
+                </div> -->
                 <div class="form-floating">
                     <textarea class="form-control" id="content" name="content" placeholder="Enter your content here"
-                        style="height: 12rem" data-sb-validations="required">{{post.content}}</textarea>
+                        style="height: 12rem" required></textarea>
                     <label for="content">Content</label>
                     <div class="invalid-feedback" data-sb-feedback="message:required">A content is required.
                     </div>
                 </div>
-                <div class="form-floating">
-                    <input class="form-control" id="img_file" name="img_file" type="text" placeholder="Image File"
-                        value="{{post.img_file}}" />
+                <!-- <div class="form-floating">
+                    <input class="form-control" id="img_file" name="img_file" type="text" placeholder="Image File" />
                     <label for="img_file">Image File</label>
+                </div> -->
+                <div class="form-floating">
+                    Background Image File (optional)<br>
+                    <input class="form-control" type="file" name="file1">
                 </div>
                 <div class="form-floating">
-                    <input class="form-control" id="writer" name="writer" type="text" placeholder="Writer"
-                        data-sb-validations="required" value="{{post.writer}}" />
+                    <input class="form-control" id="writer" name="writer" type="text" placeholder="Writer" required />
                     <label for="writer">Writer</label>
                     <div class="invalid-feedback" data-sb-feedback="name:required">A Writer is required.</div>
                 </div>

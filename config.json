@@ -13,6 +13,7 @@
         "about":"This is the about Section of the blog",
         "admin_username":"happy_blog",
         "admin_password":"password",
-        "upload_location":"C:\\Users\\Vishrut Goyal\\Downloads\\project\\Flask\\happyblog\\static\\assets\\img"
+        "upload_location":"C:\\Users\\Vishrut Goyal\\Downloads\\project\\Flask\\happyblog\\static\\assets\\img",
+        "default_post_bg_img":"home-bg.jpg"
     }
 } 
