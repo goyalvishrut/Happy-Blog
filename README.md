@@ -17,9 +17,9 @@ It is been developed using **HTML, CSS, PYTHON, FLASK, MY-SQL, JS**.
 3 Install flask, flask_sql-alchemy, flask_mail, slugify, datetime modules from python<br>
 4 Install VS-CODE, XAMPP softwares<br>
 5 Change upload_location from config.json<br>
-6 start the XAMPP control panel<br>
-7 start Apache from XAMPP control Panel<br>
-8 start SQL from XAMPP control Panel<br>
+6 Start the XAMPP control panel<br>
+7 Start Apache from XAMPP control Panel<br>
+8 Start SQL from XAMPP control Panel<br>
 9 Create a new Database namely happyblog<br>
 10 Import the "happyblog.sql" file in newly created Database<br>
 11 Run the app.py file<br>
