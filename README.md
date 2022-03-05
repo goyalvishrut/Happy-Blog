@@ -34,11 +34,27 @@ https://codewithharry.com/
 
 ## Video Showing Features of Blog!
 
+
+### Happy Blog
+
+https://user-images.githubusercontent.com/69802649/156896393-dea4090c-b174-49d6-a040-248f223371aa.mp4
+
+
 ### Admin Login and Logout
 
 https://user-images.githubusercontent.com/69802649/156896212-ac6bfbb4-a812-44a2-9179-96e8f24c4bc3.mp4
+
 
 ### Edit Feature of Existing Post
 
 https://user-images.githubusercontent.com/69802649/156896269-347135ac-f635-4e52-b069-e084e75be94b.mp4
 
+
+### Add and Delete Blog Feature
+
+https://user-images.githubusercontent.com/69802649/156896418-4f5d5eb6-e92b-4ba5-ba53-91f9e3dbe220.mp4
+
+
+### Contact Form Feature and DB Content
+
+https://user-images.githubusercontent.com/69802649/156896449-1e5d5f47-814a-4636-9879-67dcbaff6dbd.mp4
