@@ -1,9 +1,11 @@
 from distutils.sysconfig import customize_compiler
 from flask import Flask, render_template, request, session, redirect
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import desc
 from werkzeug.utils import secure_filename
 from datetime import datetime
 import os
+import math
 from flask_mail import Mail
 import json
 from slugify import slugify,Slugify,UniqueSlugify
@@ -54,11 +56,34 @@ class Posts(db.Model):
     writer = db.Column(db.String(25), nullable=False)
     img_file = db.Column(db.String(50), nullable=True)
 
-
 @app.route("/")
 def home():
-    posts = Posts.query.all()[0:params['numbers_of_posts']]
-    return render_template('index.html', params=params, posts=posts)
+    posts = Posts.query.order_by(Posts.date.desc()).all()
+    last=math.ceil(len(posts)/int(params['numbers_of_posts']))
+    page=request.args.get('page')
+    if(not str(page).isnumeric()):
+        page=1
+    page=int(page)
+    posts=posts[(page-1)*int(params['numbers_of_posts']):(page-1)*int(params['numbers_of_posts'])+int(params['numbers_of_posts'])]
+    # page=request.args.get('page')
+    '''pagination'''
+    #first page
+    if(page==1):
+        prev="#"
+        next="/?page="+str(page+1)
+    #last
+    elif(page==last):
+        prev="/?page="+str(page-1)
+        next="#"   
+    #middle
+    else:
+        prev="/?page="+str(page-1)
+        next="/?page="+str(page+1)
+
+
+
+    # posts = Posts.query.all()[0:params['numbers_of_posts']]
+    return render_template('index.html', params=params, posts=posts,prev=prev,next=next)
 
 
 @app.route("/about")
@@ -151,7 +176,8 @@ def delete(post_sr_no):
         post=Posts.query.filter_by(sr_no=post_sr_no).first()
         db.session.delete(post)
         db.session.commit()
-        os.remove(os.path.join(app.config['UPLOADER_PATH'],post.img_file))
+        if(post.img_file!=params['default_post_bg_img']):
+            os.remove(os.path.join(app.config['UPLOADER_PATH'],post.img_file))
     return redirect('/login')
 
 @app.route("/contact", methods=['GET', 'POST'])
